@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AU Bookkeeping for Beginners – VA Playbook</title>
+<style>
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font:16.5px/1.6 Georgia,"Times New Roman",serif;color:#2a2438;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:12px;
+background:radial-gradient(circle at 20% 15%,#ff9a76 0,transparent 40%),radial-gradient(circle at 85% 80%,#ffd166 0,transparent 38%),linear-gradient(135deg,#1b1464,#0b8f78)}
+.book{position:relative;width:min(94vw,580px);height:min(80vh,700px);perspective:2200px}
+.pg{position:absolute;inset:0;transform-origin:left center;transition:transform .85s cubic-bezier(.6,.05,.25,1),visibility 0s 0s;backface-visibility:hidden;
+background:#fffaf0;border-radius:4px 16px 16px 4px;box-shadow:0 14px 40px rgba(0,0,0,.35),inset 8px 0 14px -8px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden;border-left:6px solid var(--a)}
+.pg.f{transform:rotateY(-165deg);visibility:hidden;transition:transform .85s cubic-bezier(.6,.05,.25,1),visibility 0s .85s;pointer-events:none}
+.in{flex:1;overflow:auto;padding:22px 24px 12px}
+.pn{padding:8px 22px 12px;display:flex;justify-content:space-between;font:12px system-ui,sans-serif;color:#8b849b}
+.tag{display:inline-block;background:var(--a);color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:20px}
+h2{font-size:1.55rem;line-height:1.2;margin:10px 0 4px;color:var(--a)}
+h3{font:700 .95rem system-ui,sans-serif;margin:16px 0 4px;color:var(--a)}
+.lead{font-style:italic;color:#6b6480;margin:0 0 8px}
+ul,ol{padding-left:22px;margin:6px 0}li{margin:6px 0}
+b{color:#1d1740}
+.box{padding:11px 14px;border-radius:12px;margin:13px 0;font-size:.95rem}
+.plain{background:#e3f2ff;border:2px solid #7bb8f0}
+.plain:before{content:"🗣️ In plain English";display:block;font:700 12px system-ui,sans-serif;color:#1f6fb8;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
+.eg{background:#e6f7ea;border:2px dashed #46a95a}
+.eg:before{content:"✏️ Example";display:block;font:700 12px system-ui,sans-serif;color:#2c7d3d;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
+.tip{background:#fff1b8;border:1px dashed #d9a400;transform:rotate(-.5deg)}
+.say{background:color-mix(in srgb,var(--a) 12%,#fff);border-left:4px solid var(--a);font-style:italic}
+table{display:block;overflow-x:auto;border-collapse:collapse;width:100%;font:14px system-ui,sans-serif;margin:8px 0}
+td,th{border:1px solid #e6dfcf;padding:6px 8px;text-align:left;vertical-align:top}th{background:color-mix(in srgb,var(--a) 15%,#fff)}
+.v a{display:inline-block;margin:3px 4px 3px 0;padding:7px 12px;border-radius:20px;background:#e63946;color:#fff;text-decoration:none;font:600 12.5px system-ui,sans-serif}
+.v a:hover{background:#b8222e}
+details{background:#fff;border:1px solid #eadfc7;border-radius:8px;padding:7px 11px;margin:7px 0;font-size:.95rem}summary{cursor:pointer;font-weight:700;color:var(--a)}
+label{display:flex;gap:8px;align-items:flex-start;margin:7px 0;cursor:pointer;font-size:.95rem}
+.mc{background:#fff;border:2px solid var(--a);border-radius:12px;padding:10px 12px;margin:14px 0}
+.mc:before{content:"🧠 Quick check";display:block;font:700 12px system-ui,sans-serif;color:var(--a);text-transform:uppercase;letter-spacing:.05em}
+.mc p{margin:4px 0 8px}
+.o{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border:1px solid #d9d0bd;border-radius:9px;background:#fffaf0;font:14.5px system-ui,sans-serif;cursor:pointer}
+.o:hover{background:#fff1b8}.o.ok{background:#c9f0d1;border-color:#2c9d46}.o.no{background:#ffd4d4;border-color:#d33}
+.exp{display:none;font:14px system-ui,sans-serif;margin-top:6px;color:#444}.mc.done .exp{display:block}
+.wd{background:#fff;border:1px solid #eadfc7;border-left:5px solid var(--a);border-radius:10px;padding:9px 12px;margin:9px 0}
+.wd .ab{font:800 1.15rem system-ui,sans-serif;color:var(--a)}
+.wd .fl{font:700 .9rem system-ui,sans-serif;color:#1d1740}
+.wd p{margin:4px 0;font-size:.93rem}
+.wd .ph{color:#1f6fb8;font-size:.88rem}
+.cover{background:linear-gradient(160deg,#0b8f78,#1b1464 70%);color:#fff;justify-content:center;text-align:center;border-left-color:#ffd166}
+.cover .in{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.cover h1{font-size:2.2rem;line-height:1.1;margin:10px 0;color:#ffd166}
+.cover p{color:#e8f7f2;max-width:390px}.cover .big{font-size:4rem}
+.toc a{display:flex;gap:10px;padding:7px 10px;margin:4px 0;border-radius:10px;text-decoration:none;color:#2a2438;background:#fff;border:1px solid #eadfc7;font:600 14px system-ui,sans-serif;cursor:pointer}
+.toc a:hover{background:#fff1b8}.toc i{width:12px;border-radius:4px;background:var(--c);flex-shrink:0}
+.ctl{display:flex;gap:10px;align-items:center;font:600 14px system-ui,sans-serif;color:#fff}
+.ctl button{border:0;border-radius:24px;padding:10px 18px;font:700 14px system-ui,sans-serif;background:#ffd166;color:#1b1464;cursor:pointer;box-shadow:0 3px 0 #c59a1e}
+.ctl button:active{transform:translateY(2px);box-shadow:none}.ctl button:disabled{opacity:.4}
+</style>
+</head>
+<body>
+<div class="book" id="book"></div>
+<div class="ctl"><button id="pv">◀ Prev</button><button id="tc">☰ Contents</button><span id="ind"></span><button id="nx">Next ▶</button></div>
+
+<script>
+const yt=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
+const C={t:"#0b8f78",c:"#e8553f",g:"#d9960b",v:"#7a5cd6",b:"#2f6fe0",p:"#d6478b",n:"#1b1464"};
+const vids=a=>`<h3>▶ Watch &amp; learn</h3><div class="v">${a.map(x=>`<a href="${yt(x)}" target="_blank" rel="noopener">${x}</a>`).join("")}</div>`;
+const plain=t=>`<div class="box plain">${t}</div>`;
+const eg=t=>`<div class="box eg">${t}</div>`;
+const tip=t=>`<div class="box tip">💡 ${t}</div>`;
+const say=t=>`<div class="box say">${t}</div>`;
+const qa=(q,a)=>`<details><summary>${q}</summary>${a}</details>`;
+const wd=(a,f,m,ph)=>`<div class="wd"><div class="ab">${a}</div>${f?`<div class="fl">${f}</div>`:""}<p>${m}</p>${ph?`<p class="ph">🇵🇭 ${ph}</p>`:""}</div>`;
+const mc=(q,o,a,e)=>`<div class="mc" data-a="${a}"><p><b>${q}</b></p>${o.map((x,i)=>`<button class="o" data-i="${i}">${x}</button>`).join("")}<div class="exp">${e}</div></div>`;
+const P=[
+{a:C.g,cover:1,h:`<div class="big">📘</div><span class="tag" style="background:#ffd166;color:#1b1464">Flip the page →</span><h1>AU Bookkeeping for Beginners</h1><p>No experience needed. Learn Australian bookkeeping step by step, then learn how to land your first client.</p><p style="margin-top:20px">🦘 Plain English · Examples · Quizzes · Templates</p>`},
+{a:C.n,tag:"Start here",t:"What’s inside",s:"Part 1 teaches the basics. Part 2 helps you get clients.",h:`<div class="toc" id="toc"></div>`},
+{a:C.t,tag:"Part 1 · Chapter 1",t:"How to use this book",s:"Slow and steady wins.",h:`${plain("This book starts from zero. Every new word is explained, every topic has an example, and every chapter ends with a quick quiz.")}
+<ol><li>Read <b>one chapter a day</b> (15–20 minutes).</li><li>Do the <b>Quick check</b>. Wrong answers are fine, they teach you.</li><li>Tap the red buttons to watch a video on the same topic.</li><li>Write 3 things you learned in a notebook.</li><li>After Part 1, move to Part 2 and start applying.</li></ol>
+${tip("Stuck on a short word like ABN or BAS? Open the Short-form decoder or the glossary. You don’t need to memorise everything. Clients care that you understand the ideas and can find the answers.")}`},
+{a:C.c,tag:"Part 1 · Chapter 2",t:"What is bookkeeping?",s:"The big picture, before any rules.",h:`${plain("Bookkeeping means <b>recording every dollar that comes into and goes out of a business</b>, so the owner always knows how the business is doing.")}
+<ul><li><b>Bookkeeper:</b> records and organises the numbers (that’s you).</li><li><b>Accountant:</b> checks the numbers, gives advice and prepares tax returns.</li></ul>
+<h3>A typical bookkeeper does</h3><ul><li>Enter bills and invoices</li><li>Match the bank account to the records (reconcile)</li><li>Pay suppliers and chase customers</li><li>Process payroll</li><li>Prepare reports for the owner and accountant</li></ul>
+${eg("A café buys milk for $50, sells coffees for $300 and pays a barista $120. The bookkeeper records all three so the owner can see: money in $300, money out $170.")}
+${mc("Who usually gives tax advice?",["The bookkeeper","The accountant","The bank"],1,"Correct: the accountant. Bookkeepers record, accountants advise.")}${vids(["What does a bookkeeper do for beginners","Bookkeeping basics for beginners"])}`},
+{a:C.b,tag:"Part 1 · Chapter 3",t:"The 5 types of accounts",s:"Every transaction fits one of these buckets.",h:`${plain("Think of 5 labelled boxes. Every dollar you record goes into one of them.")}
+<table><tr><th>Type</th><th>What it is</th><th>Examples</th></tr>
+<tr><td><b>Assets</b></td><td>Things the business owns or is owed</td><td>Bank, equipment, customers owing money</td></tr>
+<tr><td><b>Liabilities</b></td><td>What the business owes</td><td>Loans, credit card, GST, super</td></tr>
+<tr><td><b>Equity</b></td><td>The owner’s share</td><td>Owner’s capital, retained profit</td></tr>
+<tr><td><b>Income</b></td><td>Money earned</td><td>Sales, fees</td></tr>
+<tr><td><b>Expenses</b></td><td>Costs of running the business</td><td>Rent, wages, software</td></tr></table>
+${say("Assets = Liabilities + Equity")}
+<h3>Every transaction has two sides</h3>
+${eg("Business buys a $1,000 laptop and pays from the bank.<br>• Equipment (asset) goes <b>up</b> $1,000<br>• Bank (asset) goes <b>down</b> $1,000<br>In accounting language: Debit Equipment, Credit Bank.")}
+${tip("Accounting software handles debits and credits for you. Just understand that every entry has two sides that balance.")}
+${mc("Which account type is a bank loan?",["Asset","Liability","Income"],1,"Liability: it’s money the business owes.")}${vids(["Debits and credits explained for beginners","Chart of accounts explained simply"])}`},
+{a:C.p,tag:"Part 1 · Chapter 4",t:"Australia 101",s:"Every short word spelled out and explained.",h:`${plain("Short words like ABN and ATO are everywhere in Australian bookkeeping. Each one below is spelled out in full, explained, and compared with something similar in the Philippines. The 🇵🇭 comparisons are only to help you remember. They are not exactly the same.")}
+${wd("ABN","Australian Business Number","An 11-digit number that identifies a business. It is written on invoices. A business needs one to register for GST and to be paid as a contractor.","Similar idea to a business registration number.")}
+${wd("TFN","Tax File Number","A private number (usually 9 digits) that identifies a person or company for tax. It is used to lodge tax returns. Never post it online or send it in open chat.","Similar to your TIN (Tax Identification Number).")}
+${wd("ATO","Australian Taxation Office","The government office that collects tax and looks after the super rules. Almost every tax deadline and form in this book comes from the ATO. Website: ato.gov.au.","Similar to the BIR (Bureau of Internal Revenue).")}
+${wd("ASIC","Australian Securities and Investments Commission","The government body that registers companies and business names and keeps the company records.","Similar to the SEC (Securities and Exchange Commission), and the DTI for business names.")}
+${wd("Pty Ltd","Proprietary Limited","A private company. It is its own legal person, separate from its owners.","")}
+${wd("Financial year (FY)","","The 12-month tax year in Australia: <b>1 July to 30 June</b>. Example: FY2026-27 runs from 1 Jul 2026 to 30 Jun 2027.","Different from the usual Jan–Dec calendar year.")}
+${wd("Creditors","Also called Accounts Payable (AP)","People or businesses the company <b>owes</b> money to, such as suppliers.","")}
+${wd("Debtors","Also called Accounts Receivable (AR)","Customers who <b>owe</b> the company money for invoices not yet paid.","")}
+${wd("AUD","Australian Dollar","The currency. Australian clients quote and pay in AUD. You will convert it to Philippine pesos (PHP).","")}
+${wd("Fair Work","Fair Work Ombudsman and Fair Work Commission","Government bodies that set and enforce minimum pay, leave and working conditions for employees.","Similar to DOLE (Department of Labor and Employment).")}
+<h3>Common business types</h3><ul><li><b>Sole trader:</b> one person, simplest</li><li><b>Partnership:</b> two or more people</li><li><b>Company (Pty Ltd):</b> separate legal entity</li><li><b>Trust:</b> a trustee runs it for beneficiaries</li></ul>
+${mc("When does the Australian financial year start?",["1 January","1 April","1 July"],2,"1 July, and it ends on 30 June.")}${vids(["Australian business structures explained","What is an ABN Australia"])}`},
+{a:C.v,tag:"Part 1 · Decoder",t:"Short-form decoder",s:"Every abbreviation in this book, in full.",h:`${plain("Australians love short forms. If you see one you don’t know, come back to this page.")}
+${wd("GST","Goods and Services Tax","A tax of <b>10%</b> added to most sales. Businesses collect it from customers and pass it to the ATO (after subtracting the GST they paid on their own purchases).","Similar to VAT (Value Added Tax), which is 12% in the Philippines.")}
+${wd("BAS","Business Activity Statement","A regular form (usually every quarter) that tells the ATO how much GST and withheld wage tax the business owes.","")}
+${wd("BAS agent","","A professional registered with the TPB who is allowed to charge for BAS services and lodge the BAS.","")}
+${wd("TPB","Tax Practitioners Board","The government board that registers tax agents and BAS agents.","")}
+${wd("PAYG withholding","Pay As You Go withholding","Tax the employer takes out of an employee’s wages and pays to the ATO for them.","Similar to withholding tax on compensation.")}
+${wd("PAYG instalments","Pay As You Go instalments","Small prepayments of the business’s own income tax during the year, so it isn’t one big bill at the end.","")}
+${wd("STP","Single Touch Payroll","Payroll software sends wages, tax and super details to the ATO every time staff are paid.","")}
+${wd("Super","Superannuation","Retirement savings. The employer pays extra money (12% of wages) into the employee’s super fund on top of their wage.","Similar idea to retirement contributions like SSS, but paid into a fund the employee chooses.")}
+${wd("SG","Super Guarantee","The rule that says employers must pay super. The rate is 12% from 1 July 2025.","")}
+${wd("FBT","Fringe Benefits Tax","A tax paid by employers when they give employees benefits other than wages, such as a car for personal use.","")}
+${wd("P&amp;L","Profit and Loss report","A report showing income minus expenses for a period. Shows whether the business made a profit.","")}
+${wd("AP / AR","Accounts Payable / Accounts Receivable","AP = bills the business must pay. AR = invoices customers must pay.","")}
+${wd("QBO","QuickBooks Online","Accounting software you may already know.","")}
+${wd("Xero / MYOB","","Two accounting software programs very common in Australia. MYOB stands for “Mind Your Own Business”.","")}
+${wd("SOP","Standard Operating Procedure","A written step-by-step guide for a task so it’s done the same way every time.","")}
+${wd("2FA","Two-Factor Authentication","A second step when logging in, like a code sent to your phone. It protects client accounts.","")}
+${wd("PI insurance","Professional Indemnity insurance","Insurance that covers a professional if a mistake in their work costs a client money.","")}
+${wd("VA","Virtual Assistant","Someone who supports a business remotely, like you.","")}`},
+{a:C.t,tag:"Part 1 · Chapter 5",t:"GST made simple",s:"The 10% tax on most things.",h:`${plain("<b>GST</b> (Goods and Services Tax) is <b>10%</b> added to most sales. Businesses collect it from customers, subtract the GST they paid on their own purchases, and send the difference to the ATO.")}
+<ul><li>A business must register once its yearly sales reach <b>$75,000</b> ($150,000 for non-profits).</li><li>A <b>tax invoice</b> is needed to claim GST on purchases over <b>$82.50</b>.</li></ul>
+${eg("Price including GST: $110. GST inside it is <b>$10</b> (price ÷ 11). Price before GST: $100.<br><br>A shop sells $11,000 (GST inc) → collected <b>$1,000</b> GST.<br>It buys $5,500 (GST inc) → credit <b>$500</b>.<br>It pays the ATO <b>$1,000 − $500 = $500</b>.")}
+<table><tr><th>Type</th><th>Examples</th></tr><tr><td>Taxable (10%)</td><td>Most sales</td></tr><tr><td>GST-free</td><td>Basic food, exports, most health &amp; education</td></tr><tr><td>Input-taxed</td><td>Residential rent, bank fees</td></tr></table>
+${mc("A $330 purchase includes GST. How much is GST?",["$30","$33","$300"],0,"$330 ÷ 11 = $30.")}${vids(["GST Australia explained for beginners","GST codes Xero explained"])}`},
+{a:C.c,tag:"Part 1 · Chapter 6",t:"The BAS, step by step",s:"The regular report to the ATO.",h:`${plain("The <b>BAS</b> (Business Activity Statement) is a form that tells the ATO how much GST and payroll tax-withholding the business owes. It’s usually done <b>every quarter</b>, sometimes monthly.")}
+<h3>What’s on it</h3><ul><li><b>1A:</b> GST collected on sales</li><li><b>1B:</b> GST paid on purchases (credit)</li><li><b>W1 / W2:</b> the labels for total wages paid and the tax withheld from them</li><li><b>PAYG instalments:</b> Pay As You Go instalments, small prepayments of the business’s own income tax</li></ul>
+<h3>Your prep steps</h3><ol><li>Reconcile all bank and card accounts</li><li>Check every transaction has the right GST code</li><li>Run the GST report and compare to the profit &amp; loss</li><li>Check payroll and super totals</li><li>Send the workpapers to the registered BAS agent or accountant to review and lodge</li></ol>
+${tip("Due dates are around the 28th after the period ends, but they vary. Always check the client’s lodgement calendar.")}
+${mc("What does line 1B show?",["GST collected on sales","GST credits on purchases","Wages"],1,"1B = GST credits on purchases. 1A is GST on sales.")}${vids(["How to prepare a BAS Australia beginners","BAS lodgement checklist"])}`},
+{a:C.b,tag:"Part 1 · Chapter 7",t:"Paying staff: tax &amp; super",s:"Payroll in Australia.",h:`<ul><li><b>PAYG (Pay As You Go) withholding:</b> the employer takes tax out of wages and pays it to the ATO.</li><li><b>STP</b> (Single Touch Payroll): each pay run is reported to the ATO through payroll software.</li><li><b>Super</b> (superannuation): retirement savings. Employers pay <b>12%</b> on top of wages (rate from 1 July 2025).</li><li><b>Payslip:</b> must be given within 1 working day of payment.</li></ul>
+${eg("Wage $1,000 (gross). Say $150 tax is withheld → employee receives <b>$850</b>.<br>Employer also pays super 12% = <b>$120</b> into the super fund.<br>The tax amount here is made up. Real amounts come from the ATO tax tables or payroll software.")}
+<ul><li><b>Employee vs contractor:</b> contractors send invoices with an ABN and look after their own tax and super.</li><li><b>Payday Super</b> (from 1 July 2026) changes super payment timing. Confirm current rules on ato.gov.au.</li></ul>
+${mc("Who pays the 12% super?",["The employee from their wage","The employer on top of wages","The ATO"],1,"The employer pays it on top of the employee’s wages.")}${vids(["Single Touch Payroll explained","Superannuation for employers explained"])}`},
+{a:C.v,tag:"Part 1 · Chapter 8",t:"Software &amp; monthly routine",s:"What you’ll actually do.",h:`<ul><li><b>Xero</b> is the most popular in Australia. <b>MYOB</b> and <b>QuickBooks Online</b> are also common (you already know QBO).</li><li><b>Bank feeds</b> bring bank transactions in automatically.</li><li><b>Reconciling</b> means matching the software to the bank statement.</li></ul>
+${plain("Reconciling is like checking your shopping receipt against what’s in the bag. Everything should match.")}
+<h3>Month-end checklist</h3><ol><li>Code and approve bills</li><li>Reconcile bank and credit cards</li><li>Check payroll, PAYG and super</li><li>Review GST report</li><li>Send reports: Profit &amp; Loss, Balance Sheet, Aged Payables</li></ol>
+${tip("Keep records for <b>5 years</b>. Use Xero’s free Demo Company to practise safely.")}
+${mc("What does reconciling mean?",["Matching records to the bank statement","Deleting old bills","Paying the ATO"],0,"Reconciling = matching your records to the bank statement.")}${vids(["Xero tutorial for beginners","Bank reconciliation for beginners","MYOB basics for beginners"])}`},
+{a:C.g,tag:"Part 1 · Chapter 9",t:"Income tax: just enough",s:"So you can support the accountant.",h:`${plain("You don’t prepare tax returns. You keep records so clean that the accountant can do it quickly.")}
+<ul><li><b>Company tax:</b> 25% for small “base rate entities” (turnover under $50M), otherwise 30%.</li><li><b>Sole traders:</b> business profit is added to their own tax return. Tax-free threshold is $18,200.</li><li><b>Deductions:</b> business costs that reduce taxable profit. They must be real, business-related and backed by receipts.</li><li><b>Depreciation:</b> spreading the cost of an asset over its life. Instant asset write-off limits change, so check the ATO.</li><li><b>FBT</b> (fringe benefits tax) year: 1 Apr – 31 Mar.</li><li><b>Division 7A:</b> company loans to owners. Flag them to the accountant.</li></ul>
+${mc("Who normally prepares the tax return?",["A registered tax agent or accountant","Any VA","The bank"],0,"Tax returns come from registered tax agents or accountants.")}${vids(["Australian tax basics for small business","Division 7A explained simply"])}`},
+{a:C.c,tag:"Part 1 · Chapter 10",t:"Rules for overseas Virtual Assistants (VAs)",s:"Stay safe and professional.",h:`<ul><li>Charging for <b>BAS services</b> in Australia requires registration with the <b>Tax Practitioners Board (TPB)</b> as a BAS agent.</li><li>The usual path: Certificate IV in Bookkeeping, experience and professional indemnity insurance.</li></ul>
+<h3>What you can do as a VA</h3><ul><li>Enter and code bills and bank transactions</li><li>Reconcile accounts</li><li>Process invoices, payments and payroll data</li><li>Prepare BAS <i>workpapers</i></li></ul>
+<h3>What a registered agent does</h3><ul><li>Review and lodge the BAS</li><li>Give GST/BAS advice</li></ul>
+${say("“I prepare the BAS workpapers; your registered BAS agent or accountant reviews and lodges.”")}
+${tip("Protect client data: use a password manager, two-factor login (2FA) and never share passwords in chat.")}
+${mc("Can an overseas VA lodge a BAS for a fee without registration?",["Yes","No, TPB registration is needed","Only on weekends"],1,"No. Charging for BAS services requires TPB registration.")}${vids(["BAS agent registration TPB","Overseas virtual bookkeeper for Australian clients"])}`},
+{a:C.n,tag:"Part 2 · Chapter 11",t:"Start from zero: your pitch",s:"You have more skills than you think.",h:`${plain("Clients hire people who make their life easier and look trustworthy. Your job is to show both.")}
+<h3>Skills you may already have</h3><ul><li>Accounts payable and invoice processing</li><li>Excel / Google Sheets</li><li>QuickBooks Online</li><li>Attention to detail and deadlines</li></ul>
+<h3>Pick a niche</h3><p>Choose one type of client, e.g. cafés, tradies, online shops, property managers.</p>
+<h3>Your one-line pitch</h3>${say("“I help [type of business] keep clean, BAS-ready books with accurate GST coding and on-time reconciliations, so [owner] can focus on running the business.”")}
+<h3>Time difference</h3><p>Sydney and Melbourne are about 2 hours ahead of Manila (3 hours during daylight saving, Oct–Apr). Perth is the same time. Offer overlap hours.</p>${vids(["How to niche down as a virtual assistant","Virtual bookkeeper positioning"])}`},
+{a:C.t,tag:"Part 2 · Chapter 12",t:"Where to find clients",s:"Go where they’re hiring.",h:`<ul><li><b>Job sites:</b> Seek, LinkedIn Jobs, Indeed AU, OnlineJobs.ph, Upwork</li><li><b>LinkedIn:</b> follow AU bookkeeping firms and owners, comment helpfully, send short messages</li><li><b>Facebook groups:</b> AU small-business communities (read the rules first)</li><li><b>Bookkeeping firms:</b> many outsource data entry and reconciliations</li><li><b>Referrals:</b> ex-colleagues, bosses and friends</li></ul>
+${eg("Daily goal: 5 applications or messages. Track them in a sheet: Date | Name | Where | Message sent | Reply | Follow-up date.")}${tip("Replies take time. Most people never follow up, so you will stand out if you do.")}${vids(["How to find Australian clients as a virtual assistant","LinkedIn outreach for beginners"])}`},
+{a:C.p,tag:"Part 2 · Chapter 13",t:"CV, profile &amp; practice portfolio",s:"Look ready, even with no AU clients yet.",h:`<ul><li><b>Headline:</b> “Bookkeeping VA | AP &amp; GST-ready books | QuickBooks Online”</li><li><b>Show results:</b> “Processed [X] supplier invoices monthly with [Y]% accuracy” (use real numbers)</li><li><b>Tools list:</b> QBO, Excel, Google Sheets, and “learning Xero” only if true</li><li><b>One-page CV</b> with a clear photo and short summary</li><li><b>60-second intro video</b> builds trust</li></ul>
+<h3>Build a free portfolio</h3><ol><li>Open Xero’s Demo Company</li><li>Reconcile some sample transactions</li><li>Screenshot a clean Profit &amp; Loss and Aged Payables (no real client data)</li><li>Put them in a simple PDF or your website</li></ol>${vids(["Virtual assistant portfolio no experience","Xero certification free training"])}`},
+{a:C.c,tag:"Part 2 · Chapter 14",t:"Message templates",s:"Copy, then personalise.",h:`<h3>First message</h3>${say("Hi [Name], I saw [something specific about their business]. I’m a Philippines-based bookkeeping VA experienced in AP, reconciliations and QuickBooks Online, and I help AU small businesses stay BAS-ready. Could we have a 15-minute chat next week? I’m happy to do a small paid trial.")}
+<h3>Follow-up (after 4–5 days)</h3>${say("Hi [Name], just following up. If month-end feels heavy, I can share the simple checklist I use. Worth a quick call?")}
+<h3>When you get a reply</h3>${say("Thanks [Name]! To start, could you tell me what software you use, how many bills per month, and when your BAS is due?")}
+${tip("Always change line one. Generic messages get ignored.")}${vids(["Cold message examples for freelancers","How to follow up professionally"])}`},
+{a:C.b,tag:"Part 2 · Chapter 15",t:"Nail the interview",s:"Tap a question to see a model answer.",h:`${qa("Tell me about yourself.","Give 3 parts: your experience (AP and bookkeeping), your tools (QBO, Excel), and why you want to support their business.")}${qa("How do you prepare for a BAS?","I reconcile accounts, check GST codes, compare the GST report with the P&amp;L, and check payroll and super. Then the registered agent or accountant reviews and lodges.")}${qa("A bill has no tax invoice. What now?","I ask the supplier for one. Over $82.50 without a tax invoice, the GST credit can’t be claimed.")}${qa("How do you handle the time difference?","We agree overlap hours, I send a daily update and use a shared task list.")}${qa("You haven’t used Xero. Can you learn?","“I use QBO daily and the ideas are the same. I’m practising in Xero’s demo company and can be productive quickly.”")}${qa("How do you protect client data?","Password manager, 2FA, no shared logins, and access removed when the contract ends.")}
+${tip("Practise aloud. Record yourself once and listen back.")}${vids(["Bookkeeper interview questions and answers","Virtual assistant interview tips"])}`},
+{a:C.g,tag:"Part 2 · Chapter 16",t:"Pricing &amp; contracts",s:"Get paid fairly and on time.",h:`<ul><li><b>Quote in AUD</b> and list exactly what’s included. Check current market rates before you quote.</li><li><b>Hourly</b> (with a minimum) or a <b>monthly retainer</b> for a set scope.</li><li><b>Paid trials</b> are fine. Unpaid “tests” are a red flag.</li><li><b>Agree in writing:</b> tasks, hours, response times, invoice date, payment method (Wise, PayPal, bank transfer) and notice period.</li><li><b>Invoice upfront</b> or weekly for new clients.</li><li><b>Know your numbers:</b> convert AUD to PHP, subtract fees and taxes, and review your rate every 6 months.</li></ul>
+${tip("Don’t underprice just to win. The cheapest clients are often the hardest.")}${mc("Which is a red flag?",["A paid trial week","A long unpaid test","A written agreement"],1,"Long unpaid tests are a common red flag.")}${vids(["How to price virtual assistant services","Freelance contract basics"])}`},
+{a:C.v,tag:"Part 2 · Chapter 17",t:"Keep clients &amp; grow",s:"Happy clients bring more clients.",h:`<ul><li><b>First 30 days:</b> over-communicate and confirm every process.</li><li><b>Write SOPs</b> (step-by-step guides) for repeat tasks.</li><li><b>Monthly summary:</b> done, pending, and questions for the owner.</li><li><b>Ask for a testimonial</b> after month 2–3, then ask for referrals.</li><li><b>Upskill:</b> Xero/MYOB certificates, payroll, Cert IV, and later BAS agent registration.</li></ul>
+${eg("Monthly message: “Hi [Name], April books are done. 2 bills need approval and 1 unknown bank payment of $120 needs a description. BAS workpapers will be ready by the 15th.”")}${vids(["How to keep freelance clients long term","Bookkeeping SOP template"])}`},
+{a:C.p,tag:"Reference",t:"Mini glossary",s:"Quick lookup of key words.",h:`${wd("Accrual basis","","Record income and expenses when they happen (when invoiced), not when money moves.","")}
+${wd("Cash basis","","Record income and expenses only when money is received or paid.","")}
+${wd("Aged payables","","A list of unpaid supplier bills sorted by how old they are.","")}
+${wd("Balance sheet","","A snapshot of what the business owns (assets), owes (liabilities) and the owner’s share (equity).","")}
+${wd("Bill","","An invoice you receive from a supplier that you need to pay.","")}
+${wd("Chart of accounts","","The full list of accounts a business uses to sort its transactions.","")}
+${wd("Gross / Net","","Gross = before tax or deductions. Net = after.","")}
+${wd("Input tax credit","","GST paid on business purchases that can be claimed back.","")}
+${wd("Reconcile","","Match your accounting records to the bank statement to check they agree.","")}
+${wd("Tax invoice","","An invoice with required details (ABN, GST amount). Needed to claim GST credits over $82.50.","")}
+<p style="font-size:.85rem;color:#6b6480">Short forms such as ABN, BAS and STP are on the Short-form decoder page.</p>`},
+{a:C.t,tag:"Action plan",t:"Your 30-day plan",s:"Tick as you go. Saved on this device.",h:`<div id="chk"></div>${tip("Done is better than perfect. Send your first 10 messages this week. 🚀")}`},
+{a:C.n,cover:1,end:1,h:`<div class="big">🦘</div><h1>You’re ready to start.</h1><p>Study a little each day, practise, and apply consistently. Every expert was once a beginner.</p><p style="font-size:.8rem;opacity:.8;margin-top:24px">Study notes only, not tax or legal advice. Rates and rules change, so confirm on ato.gov.au.</p>`}
+];
+const plan=["Read chapters 1–4","Read chapters 5–7 (GST, BAS, payroll)","Read chapters 8–10","Open Xero Demo Company and practise reconciling","Write your one-line pitch (Ch. 11)","Update your CV and LinkedIn headline","Build 2 sample reports for your portfolio","Record a 60-second intro video","List 30 target clients or firms","Send 10 personalised messages","Apply to 10 jobs on Seek / LinkedIn / OnlineJobs.ph","Follow up after 4–5 days","Practise interview answers aloud"];
+const bk=document.getElementById("book");
+let cur=0,st={};try{st=JSON.parse(localStorage.getItem("auva2")||"{}")}catch(e){}
+const sv=()=>{try{localStorage.setItem("auva2",JSON.stringify(st))}catch(e){}};
+P.forEach((p,i)=>{
+ const d=document.createElement("div");d.className="pg"+(p.cover?" cover":"");d.style.setProperty("--a",p.a);d.style.zIndex=P.length-i;
+ d.innerHTML=p.cover?`<div class="in">${p.h}</div>`:`<div class="in"><span class="tag">${p.tag}</span><h2>${p.t}</h2>${p.s?`<p class="lead">${p.s}</p>`:""}${p.h}</div><div class="pn"><span>AU Bookkeeping for Beginners</span><span>${i+1} / ${P.length}</span></div>`;
+ bk.appendChild(d);
+});
+const pgs=[...bk.children];
+document.getElementById("toc").innerHTML=P.map((p,i)=>p.t&&i>1?`<a data-go="${i}" style="--c:${p.a}"><i></i>${p.t}</a>`:"").join("");
+document.getElementById("chk").innerHTML=plan.map((x,i)=>`<label><input type="checkbox" data-k="${i}" ${st[i]?"checked":""}>${x}</label>`).join("");
+bk.addEventListener("change",e=>{if(e.target.dataset.k){st[e.target.dataset.k]=e.target.checked;sv()}});
+bk.addEventListener("click",e=>{
+ const g=e.target.closest("[data-go]");if(g)return go(+g.dataset.go);
+ const o=e.target.closest(".o");if(o){const m=o.parentElement;if(m.classList.contains("done"))return;m.classList.add("done");
+  const ok=o.dataset.i===m.dataset.a;o.classList.add(ok?"ok":"no");
+  if(!ok)m.querySelector(`.o[data-i="${m.dataset.a}"]`).classList.add("ok");}
+});
+function go(n){cur=Math.max(0,Math.min(P.length-1,n));pgs.forEach((d,i)=>d.classList.toggle("f",i<cur));
+ document.getElementById("ind").textContent=(cur+1)+" / "+P.length;
+ document.getElementById("pv").disabled=cur==0;document.getElementById("nx").disabled=cur==P.length-1;
+ try{localStorage.setItem("auva2Page",cur)}catch(e){}}
+document.getElementById("nx").onclick=()=>go(cur+1);
+document.getElementById("pv").onclick=()=>go(cur-1);
+document.getElementById("tc").onclick=()=>go(1);
+document.addEventListener("keydown",e=>{if(e.key=="ArrowRight")go(cur+1);if(e.key=="ArrowLeft")go(cur-1)});
+let sx=null;
+bk.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+bk.addEventListener("touchend",e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>60)go(cur+(d<0?1:-1));sx=null});
+let s0=0;try{s0=+localStorage.getItem("auva2Page")||0}catch(e){}
+go(s0);
+</script>
+</body>
+</html>
